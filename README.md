@@ -126,30 +126,11 @@ The project will build a **binary sentiment classifier** to predict whether a mo
 
 ---
 
-## Expected Outcomes
+So, this project aims to produce a robust sentiment analysis model capable of classifying IMDB reviews with high accuracy. Expected outcomes include:
+•	Performance metrics: Accuracy, Precision, Recall, F1-score.
+•	A fine-tuned model adapted to the IMDB dataset.
+•	Demonstration of predictions via a simple application and visualizations.
+•	Insights on preprocessing, embedding strategies, and hyperparameter optimization.
 
-- High-performing **sentiment analysis model** for IMDB reviews.  
-- Metrics: Accuracy, Precision, Recall, F1-score.  
-- Demonstration of predictions via an application and visualizations.  
-- Insights on **preprocessing, embedding strategies, and hyperparameter optimization**.  
-
----
-
-## Tools and Libraries
-
-- **Programming Language:** Python  
-- **Deep Learning Framework:** PyTorch / Hugging Face Transformers  
-- **Data Handling:** Pandas, NumPy  
-- **Visualization:** Matplotlib, Seaborn  
-- **Preprocessing:** NLTK, SpaCy, Hugging Face Tokenizers  
-- **Application Development:** Streamlit (optional)  
-
----
-
-## References
-
-1. Kim, Y. (2014). *Convolutional Neural Networks for Sentence Classification.* [Link](https://aclanthology.org/D14-1181.pdf)  
-2. Maas, A. L., et al. (2011). *Learning Word Vectors for Sentiment Analysis.* [Link](https://aclanthology.org/P11-1015.pdf)  
-3. Devlin, J., et al. (2019). *BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.* [Link](https://arxiv.org/abs/1810.04805)  
 
 ---
