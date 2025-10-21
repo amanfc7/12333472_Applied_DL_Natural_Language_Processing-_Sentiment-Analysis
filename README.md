@@ -4,8 +4,8 @@ Applied Deep Learning Project (WS 2025)
 # Applied Deep Learning (WS 2025)  
 **Assignment 1 – Initiate**  
 
-**Name:**  
-**Student ID:**  
+**Name:Aman Bhardwaj**  
+**Student ID: 12333472**  
 
 ---
 
