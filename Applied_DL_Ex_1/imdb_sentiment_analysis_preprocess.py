@@ -166,9 +166,9 @@ class IMDBPreprocessing:
         
         print("Applying minimal text preprocessing...")
         
-        train_df["clean_review"] = train_df["review"].apply(self.clean_text)
-        val_df["clean_review"] = val_df["review"].apply(self.clean_text)
-        test_df["clean_review"] = test_df["review"].apply(self.clean_text)
+        train_df["review"] = train_df["review"].apply(self.clean_text)
+        val_df["review"] = val_df["review"].apply(self.clean_text)
+        test_df["review"] = test_df["review"].apply(self.clean_text)
 
         # Save CLEANED splits (after preprocessing):
 
@@ -180,9 +180,9 @@ class IMDBPreprocessing:
         
         print("Tokenizing text using RoBERTa tokenizer...")
 
-        train_inputs, train_masks = self.tokenize_texts(train_df["clean_review"])
-        val_inputs, val_masks = self.tokenize_texts(val_df["clean_review"])
-        test_inputs, test_masks = self.tokenize_texts(test_df["clean_review"])
+        train_inputs, train_masks = self.tokenize_texts(train_df["review"])
+        val_inputs, val_masks = self.tokenize_texts(val_df["review"])
+        test_inputs, test_masks = self.tokenize_texts(test_df["review"])
 
         # to convert sentiment labels to integers:
 
@@ -210,3 +210,7 @@ class IMDBPreprocessing:
 
         print("Preprocessing completed. Data is now ready for training :)")
 
+
+if __name__ == "__main__":
+    preprocessor = IMDBPreprocessing()
+    preprocessor.run()
