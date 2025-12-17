@@ -143,3 +143,85 @@ So, this project aims to produce a robust sentiment analysis model capable of cl
 - Demonstration of predictions via a simple application and visualizations.  
 - Insights on preprocessing, embedding strategies, and hyperparameter optimization.
 
+
+### 1) Data Preprocessing:
+
+#### Loading the Dataset
+- We use the IMDB Large Movie Review Dataset (50,000 labeled reviews).  
+- Contains two columns:
+  - `review`: the text of the movie review
+  - `sentiment`: label (`positive` / `negative`)
+
+#### Train / Validation / Test Split
+- Split **before any preprocessing** to avoid data leakage:  
+  - Training: 80%  
+  - Validation: 10%  
+  - Test: 10%  
+- Stratified splitting ensures class balance in all sets.  
+- Raw splits are saved as CSV files in `split_raw_data/`.
+
+#### Minimal Text Preprocessing
+- Remove **HTML tags** such as `<br />`.  
+- Normalize **multiple whitespaces** into a single space.  
+- **No other preprocessing** is applied because RoBERTa is pretrained on raw text:  
+  - No lowercasing  
+  - No punctuation removal  
+  - No stopword removal  
+  - No stemming or lemmatization  
+- Cleaned reviews are saved in CSV files in `preprocessed_clean_data/` with the **same column name `review`**.
+
+#### Tokenization & Vectorization
+- **RoBERTa tokenizer** (BPE-based) converts text into:  
+  - **Input IDs:** numeric tokens representing subwords  
+  - **Attention masks:** distinguish content tokens from padding  
+- Sequences are **padded/truncated** to a maximum length of 256 tokens.  
+- Tokenized outputs are saved as `.pt` files in `tokenized_files/` for train, validation, and test sets.  
+- This step performs vectorization, so **no additional text-to-numeric encoding** is needed.
+
+#### Label Encoding
+- Sentiment labels are **manually encoded** as integers:  
+  - `0` → negative  
+  - `1` → positive  
+- Labels are saved as `.pt` tensors for training and evaluation.
+
+#### Test Set Notes
+- Sentiment column is **kept for evaluation**, but **not used as input** for prediction.  
+- Allows comparison of predicted labels with ground truth after inference.
+
+#### Summary
+After preprocessing, the pipeline produces:
+- Raw CSV splits: `split_raw_data/`
+- Cleaned CSV splits: `preprocessed_clean_data/`
+- Tokenized `.pt` files: `tokenized_files/` (input IDs, attention masks, labels)
+
+This ensures the data is **ready for training, validation, and evaluation** with a RoBERTa-based sentiment classifier.
+
+---
+
+#### Preprocessing Pipeline Diagram
+
+```text
+Raw IMDB Dataset (CSV)
+       │
+       ▼
+Train / Validation / Test Split (80/10/10)
+       │
+       ▼
+Minimal Text Cleaning
+- Remove HTML tags
+- Normalize whitespaces
+       │
+       ▼
+Cleaned CSV Files (split by train/val/test)
+       │
+       ▼
+RoBERTa Tokenization
+- Convert text → Input IDs & Attention Masks
+- Pad / Truncate to max_length=256
+       │
+       ▼
+Save Tokenized Tensors (.pt files)
+- train_inputs.pt, train_masks.pt, train_labels.pt
+- val_inputs.pt, val_masks.pt, val_labels.pt
+- test_inputs.pt, test_masks.pt, test_labels.pt
+
