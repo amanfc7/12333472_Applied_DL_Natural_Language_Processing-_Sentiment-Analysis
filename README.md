@@ -296,7 +296,7 @@ Save Tokenized Tensors (.pt files)
 
 python -m pytest -v
 
-5) Continuous Integration:
+## 5) Continuous Integration:
 
 GitHub Actions workflow included in .github/workflows/ci.yml.
 
@@ -310,7 +310,7 @@ Pip packages cached for faster workflow execution.
 
 Ensures reproducibility and code quality across environments.
 
-6) Summary of Pipeline and Results
+## 6) Summary of Pipeline and Results
 
 Preprocessing: Cleaned IMDB reviews → tokenized tensors.
 
