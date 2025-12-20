@@ -226,4 +226,108 @@ Save Tokenized Tensors (.pt files)
 - train_inputs.pt, train_masks.pt, train_labels.pt
 - val_inputs.pt, val_masks.pt, val_labels.pt
 - test_inputs.pt, test_masks.pt, test_labels.pt
+```
 
+#### 2) Training, Validation, and Testing
+
+### Baseline Model
+- A **baseline RoBERTa model** was trained on the tokenized IMDB dataset.
+- Training used default hyperparameters with minimal tuning.
+- Evaluated on **training, validation, and test sets** to establish a reference performance.
+
+### Optimized Model
+- An **optimized RoBERTa model** was trained with hyperparameter tuning:
+  - Adjusted learning rate, batch size, and number of epochs.
+  - Implemented **early stopping** to prevent overfitting.
+  - Fine-tuned dropout and pooling strategies for better generalization.
+- The optimized model was trained and evaluated on the same splits as the baseline.
+
+### Metrics Used
+- **Accuracy**  
+- **Precision**  
+- **Recall**  
+- **F1-score** (used as the main metric for model comparison)
+- **Loss** (cross-entropy)
+- **Runtime** (seconds per test evaluation)
+
+---
+
+## 3) Model Comparison & Visualization
+
+### Metrics Comparison
+- Baseline vs optimized models compared on the **test set**.  
+- Bar plots created for **accuracy, precision, recall, F1-score, loss, and error**.
+- Runtime also visualized in a separate plot.
+
+### Loss Curves
+- Plotted **train / validation / test loss curves** for both models.
+- Helped detect underfitting/overfitting.
+
+### F1-score Emphasis
+- F1-score used as the primary measure for comparing the **baseline and optimized models**.
+- Clear improvements were observed after hyperparameter tuning and optimization.
+
+### Plot Storage
+- All comparison plots saved under:
+- `test_metrics_comparison.png`
+- `test_runtime_comparison.png`
+- `loss_curves_comparison.png`
+
+---
+
+## 4) Testing and Validation
+
+### Preprocessing Tests
+- Verified existence of **raw and cleaned CSV splits**.  
+- Checked that **train/val/test split sizes** sum to total dataset size.  
+- Sample texts inspected for proper **cleaning of HTML tags and whitespace**.
+
+### Postprocessing / Model Tests
+- Verified existence and shapes of **tokenized tensors**.  
+- Checked **label integrity**: only 0 or 1, matching input sizes.  
+- Ran **tiny forward/backward training pass** to ensure model runs on CPU.  
+- Metrics calculation tested on a small subset to confirm **accuracy, precision, recall, F1** computation.  
+- CSV save/load tested.  
+- Confusion matrix plotting verified.
+
+> All tests implemented using **pytest** for reproducibility.  
+
+**Run tests locally:**
+
+python -m pytest -v
+
+5) Continuous Integration:
+
+GitHub Actions workflow included in .github/workflows/ci.yml.
+
+Workflow features:
+
+Automatically runs tests on every commit.
+
+Code formatting checked using black.
+
+Pip packages cached for faster workflow execution.
+
+Ensures reproducibility and code quality across environments.
+
+6) Summary of Pipeline and Results
+
+Preprocessing: Cleaned IMDB reviews → tokenized tensors.
+
+Baseline Training: Initial RoBERTa model trained for reference.
+
+Optimization: Hyperparameter tuning, early stopping, pooling adjustments.
+
+Evaluation: Metrics calculated on train, validation, and test sets.
+
+Visualization: Comparison plots for metrics, runtime, and loss curves.
+
+Testing / CI: Unit tests with pytest and automated workflow for reproducibility.
+
+Outcome:
+
+A fine-tuned RoBERTa model achieves better F1-score than baseline.
+
+All training, evaluation, and comparison results documented with visualizations.
+
+The project demonstrates a complete end-to-end NLP sentiment analysis workflow.
