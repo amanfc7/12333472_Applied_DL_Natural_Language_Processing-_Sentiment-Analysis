@@ -20,7 +20,7 @@ The goal of this assignment is to:
 - Build an end-to-end pipeline: **preprocessing → tokenization → training → evaluation**.
 - Implement a **baseline RoBERTa model**.
 - Reimplement and Fine-tune the model to improve performance through **optimized hyperparameters**.
-- Compare baseline and optimized models using standard metrics: Accuracy, Precision, Recall, F1-score, Loss, and Runtime. I amusing F1 as the **Main Metric** of comparison between the models.
+- Compare baseline and optimized models using standard metrics: Accuracy, Precision, Recall, F1-score, Loss, and Runtime. I used F1 as the **Main Metric** of comparison between the models. The target value I wanted to achieve for F1 is >= 0.90
 - Generate visualizations for comparison.
 
 **Key highlights:**
@@ -81,6 +81,8 @@ Implemented **unit tests using `pytest`**:
    - Validate tokenized tensors exist and shapes are correct.
    - Check label integrity (only 0/1 and match input size).
    - Histogram of review lengths (train set)
+  
+    ![Assignment 2](preprocessed_reviews_distribution_plot.png)
 
 3. **Postprocessing tests**
 
