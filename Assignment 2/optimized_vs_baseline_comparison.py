@@ -79,3 +79,16 @@ plt.title("Loss Comparison: Optimized (Fine-Tuned) vs Baseline RoBERTa")
 plt.legend()
 plt.savefig("final_comparison_plots/loss_curves_comparison.png", bbox_inches="tight")
 plt.show()
+
+# F1-score (Main Metric) comparison plot (optimized vs baseline):
+
+opt_f1  = opt_df.loc[opt_df["split"]=="test", "f1"].values[0]
+base_f1 = base_df.loc[base_df["split"]=="test", "f1"].values[0]
+
+plt.figure(figsize=(6,5))
+plt.bar(["Optimized (Fine-Tuned)", "Baseline RoBERTa"], [opt_f1, base_f1], color=["skyblue", "salmon"])
+plt.ylim(0,1)
+plt.ylabel("F1 Score")
+plt.title("Test Set F1-Score Comparison")
+plt.savefig("final_comparison_plots/test_f1_comparison_(Main Metric).png", bbox_inches="tight")
+plt.show()
