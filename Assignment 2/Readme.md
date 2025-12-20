@@ -115,6 +115,14 @@ Baseline Results Table:
 | Val   | 0.8611   | 0.8867    | 0.8280 | 0.8564   | 0.1389 | 0.3786 | 54.66       |
 | Test  | 0.8626   | 0.8726    | 0.8492 | 0.8607   | 0.1374 | 0.3762 | 60.74       |
 
+The baseline model of RoBERTa showed good results given it was trained for 5 epochs with minimal training only for head classifier adn with default hyperparameters. I kept batch_size = 32 same as the optimized model for better comparison.
+
+Below are the plots of the baseline model: (Rest of the plots are saved in baseline_model_results folder)
+
+![baseline_model_results](baseline_metrics_comparison.png)
+![baseline_model_results](test_confusion_matrix.png)
+![baseline_model_results](baseline_loss_curve.png)
+
 **Optimized Model (Reimplemented/Fine-Tuned)**
 
 Fine-tuned RoBERTa with:
@@ -160,6 +168,13 @@ Here I only put the results of the best configuration in the table for further c
 | Loss        | 0.0209  | 0.2864     |
 | Runtime (s) | 5722.76 | 5722.76    |
 
+From the table it can bee seen that the training metrics are quite high. Also, the training time took around 2 hours for each configuration, for some it took less due to early stopping when even after some epochs their performance metrics were not increasing. The validation set showed a bit less performance than the test set which is understandable as the size of th validation set is 8 times smaller than training set.
+Below are the plots for the training of the model, validation confusion matrix and runtimes. Rest of th plots are saved in train_val_plots folder:
+
+![train_val_plots](best_model_loss_bar.png)
+![train_val_plots](runtime.png)
+![train_val_plots](val_confusion_matrix.png)
+
 ## Test Results (Best Model):
 
 | Split | Accuracy | Precision | Recall | F1-score | Error  | Loss   | Runtime (s) |
@@ -167,6 +182,17 @@ Here I only put the results of the best configuration in the table for further c
 | Test  | 0.9430   | 0.9355    | 0.9516 | 0.9435   | 0.0570 | 0.2727 | 197.21      |
 
 So from the above tables it can be seen that the F1 score improved a bit for the test set and Cross Entropy Loss also improved a little. For training I used early stopping patience = 2 which helped to stop tghe epochs whenever the metrics started decreasing.
+Below are the plots for the testing of model:
+
+![test_plots](test_confusion_matrix.png)
+![test_plots](train_val_test_loss_curve.png)
+![test_plots](test_roc_curve.png)
+![test_plots](attention_heatmap.png)
+
+Below is the plot comparing the metrics, runtimes and loss of training, validation  and testing of the optimized (fine-tuned) model:
+
+![test_comparison_plots](train_val_test_metrics_loss.png)
+![test_comparison_plots](runtime_comparison.png)
 
 ## Comparison: Optimized vs Baseline 
 
@@ -186,6 +212,16 @@ So from the above table it can be clearly seen that my reimplemented and fine Tu
 So,
 -The optimized model significantly outperforms the baseline across all metrics.
 -Fine-tuning all layers and hyperparameter tuning led to higher F1-score (0.9435 vs ~0.8607).
+
+The below plots show this behaviour and show how the optimized model perfoems better than the baseline RoBERTa in all aspects: 
+
+![final_comparison_plots](test_metrics_comparison.png)
+![final_comparison_plots](test_runtime_comparison.png)
+![final_comparison_plots](loss_curves_comparison.png)
+
+Finally, below is the plot which shows the comparison of the **Main Metric (F1)** of comparison between the Optimized and the Baseline RoBERTa model. The F1 score of the Optimized model is significamtly higer and thus shows better performance than the base model as can be noticed from the plot below:
+
+![final_comparison_plots](test_f1_comparison_Main_Metric.png)
 
 ## CI / Auto-formatting
 
