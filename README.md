@@ -144,6 +144,8 @@ So, this project aims to produce a robust sentiment analysis model capable of cl
 - Insights on preprocessing, embedding strategies, and hyperparameter optimization.
 
 
+**Assignment 1 – Hacking**  
+
 ### 1) Data Preprocessing:
 
 #### Loading the Dataset
