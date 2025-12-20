@@ -31,7 +31,7 @@ The goal of this assignment is to:
 - Saved metrics and plots for visual reporting.
 
 ---
-
+```
 ## Preprocessing Pipeline
 
 Raw IMDB Dataset (CSV)
@@ -50,7 +50,7 @@ RoBERTa Tokenization
        │
        ▼
 Save Tokenized Tensors (.pt files)
-
+```
 
 ### Steps Implemented:
 
@@ -174,7 +174,9 @@ Best configuration after training:
 }
 
 ## Training & Validation Results (Best Model). 
-Tokenized Tensors
+
+```
+ Tokenized Tensors
        │
        ▼
 RoBERTa Classifier Training (8 configs)
@@ -193,7 +195,7 @@ Metrics Comparison (Optimized vs Baseline)
        │
        ▼
 Plots: Loss Curves, Confusion Matrix, Metric Comparison
-
+```
 
 Here I only put the results of the best configuration in the table for further comparison. All other 7 configuration results are saved in train_val_results folder.
 
