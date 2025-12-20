@@ -1,0 +1,60 @@
+# File: .github/workflows/python-ci.yml
+
+name: Python CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.12]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest torch torchvision transformers matplotlib pandas scikit-learn black ruff
+
+      - name: Run pytest and save reports
+        run: |
+          pytest --junitxml=pytest_report.xml -v
+        continue-on-error: false
+
+      - name: Upload pytest report
+        uses: actions/upload-artifact@v3
+        with:
+          name: pytest-report
+          path: pytest_report.xml
+
+      - name: Run code formatting check (black)
+        run: |
+          black --check .
+
+      - name: Run linting (ruff)
+        run: |
+          ruff check .
