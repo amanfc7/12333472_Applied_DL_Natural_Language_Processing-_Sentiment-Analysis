@@ -1,9 +1,0 @@
-{
-    "lr": 1e-05,
-    "batch_size": 32,
-    "dropout": 0.1,
-    "weight_decay": 0.0,
-    "scheduler": "cosine",
-    "warmup_ratio": 0.06,
-    "pooling": "cls"
-}
