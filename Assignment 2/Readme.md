@@ -162,6 +162,20 @@ Scheduler: cosine, linear
 
 Pooling: CLS / mean
 
+## Results Table (All 8 Configurations):
+
+| lr    | batch_size | dropout | weight_decay | scheduler | warmup_ratio | pooling | train_acc | val_acc | runtime (s) |
+| ----- | ---------- | ------- | ------------ | --------- | ------------ | ------- | --------- | ------- | ----------- |
+| 1e-05 | 32         | 0.2     | 0.01         | linear    | 0.06         | mean    | 0.9929    | 0.9429  | 8036        |
+| 3e-05 | 32         | 0.1     | 0            | cosine    | 0.06         | mean    | 0.9896    | 0.9344  | 5772        |
+| 3e-05 | 16         | 0.1     | 0.01         | cosine    | 0.06         | mean    | 0.9642    | 0.9233  | 3680        |
+| 3e-05 | 16         | 0.2     | 0.01         | linear    | 0.06         | cls     | 0.9811    | 0.9320  | 4906        |
+| 1e-05 | 32         | 0.1     | 0.01         | cosine    | 0.06         | mean    | 0.9955    | 0.9427  | 9184        |
+| 2e-05 | 32         | 0.1     | 0.01         | cosine    | 0.10         | cls     | 0.9980    | 0.9420  | 9182        |
+| 3e-05 | 32         | 0.2     | 0            | linear    | 0.10         | cls     | 0.9975    | 0.9384  | 9150        |
+| 1e-05 | 32         | 0.1     | 0            | cosine    | 0.06         | cls     | 0.9862    | 0.9429  | 5722        |
+
+
 Best configuration after training:
 {
   "lr": 1e-05,
@@ -197,7 +211,7 @@ Metrics Comparison (Optimized vs Baseline)
 Plots: Loss Curves, Confusion Matrix, Metric Comparison
 ```
 
-Here I only put the results of the best configuration in the table for further comparison. All other 7 configuration results are saved in train_val_results folder.
+Here I only put the results of the best configuration in the table for further comparison.
 
 | Metric      | Train   | Validation |
 | ----------- | ------- | ---------- |
@@ -267,12 +281,17 @@ Finally, below is the plot which shows the comparison of the **Main Metric (F1)*
 ## CI / Auto-formatting
 
 -CI YAML file: .github/workflows/ci.yml
+
 -Runs on push and pull request:
+
 -Installs dependencies from requirements.txt
+
 -Runs pytest -v automatically
+
 -Caches pip packages to speed up workflow
+
 -Uploads test reports as artifacts
 
+## Conclusion 
 
-
-
+In this project, I re-implemented an end-to-end sentiment analysis pipeline on the IMDB dataset using a fine-tuned RoBERTa model. After systematic hyperparameter tuning across multiple configurations, the reimplemented optimized model of RoBERTa showed clear improvements over a baseline on all evaluation metrics. The final model achieved strong generalization on the test set, supported by detailed metric analysis, visualizations, and automated testing. These results demonstrate the effectiveness of transformer-based transfer learning for sentiment classification and reflect best practices in applied deep learning workflows.
