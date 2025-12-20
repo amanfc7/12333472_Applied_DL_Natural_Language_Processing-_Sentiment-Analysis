@@ -34,6 +34,24 @@ The goal of this assignment is to:
 
 ## Preprocessing Pipeline
 
+Raw IMDB Dataset (CSV)
+       │
+       ▼
+Train / Validation / Test Split (80/10/10)
+       │
+       ▼
+Minimal Text Cleaning
+       │
+       ▼
+Cleaned CSV Files (split by train/val/test)
+       │
+       ▼
+RoBERTa Tokenization
+       │
+       ▼
+Save Tokenized Tensors (.pt files)
+
+
 ### Steps Implemented:
 
 1. **Loading Dataset**
@@ -156,6 +174,27 @@ Best configuration after training:
 }
 
 ## Training & Validation Results (Best Model). 
+Tokenized Tensors
+       │
+       ▼
+RoBERTa Classifier Training (8 configs)
+       │
+       ▼
+Validation Monitoring / Early Stopping
+       │
+       ▼
+Best Model Selection
+       │
+       ▼
+Test Set Evaluation
+       │
+       ▼
+Metrics Comparison (Optimized vs Baseline)
+       │
+       ▼
+Plots: Loss Curves, Confusion Matrix, Metric Comparison
+
+
 Here I only put the results of the best configuration in the table for further comparison. All other 7 configuration results are saved in train_val_results folder.
 
 | Metric      | Train   | Validation |
