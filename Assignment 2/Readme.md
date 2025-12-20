@@ -1,5 +1,6 @@
 # 12333472_Applied_DL_NLP_Sentiment_Analysis
-**Assignment 2 – Hacking**  
+# Applied Deep Learning Project (WS2025)
+**Assignment 2 – Hacking (Sentiment Analysis on IMDB Movie Reviews Datast using RoBERTa model)**  
 **Name:** Aman Bhardwaj  
 **Student ID:** 12333472  
 
