@@ -15,7 +15,3 @@ torchvision==0.16.0
 torchaudio==2.1.0
 transformers==4.42.0
 
-# Visualization & Gradient Tools
-gradviz==0.1.2
-netron==8.9.3
-
