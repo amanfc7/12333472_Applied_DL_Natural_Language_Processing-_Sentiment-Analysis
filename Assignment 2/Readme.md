@@ -145,7 +145,8 @@ Best configuration after training:
   "pooling": "cls"
 }
 
-## Training & Validation Results (Best Model). Here I only put the results of the best configuration in the table for further comparison. All other 7 configuration results are saved in train_val_results folder.
+## Training & Validation Results (Best Model). 
+Here I only put the results of the best configuration in the table for further comparison. All other 7 configuration results are saved in train_val_results folder.
 
 | Metric      | Train   | Validation |
 | ----------- | ------- | ---------- |
