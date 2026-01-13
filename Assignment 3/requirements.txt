@@ -1,5 +1,5 @@
-```txt
 streamlit
 torch
 transformers
+
 numpy
