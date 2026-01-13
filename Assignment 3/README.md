@@ -97,7 +97,11 @@ Lightweight and CPU-friendly inference
 
 ## How to Run the Application
 
-1. Create and activate a virtual environment
+1.Navigate to Assignment 3 Directory
+
+cd Assignment 3
+
+2. Create and activate a virtual environment
 
 python -m venv venv
 
@@ -107,13 +111,9 @@ venv\Scripts\activate
 ### macOS/Linux
 source venv/bin/activate
 
-2. Install Dependencies
+3. Install Dependencies
 
 pip install -r requirements.txt
-
-3. Navigate to Assignment 3 Directory
-
-cd Assignment 3
 
 4. Run Streamlit App
 
@@ -130,5 +130,6 @@ This app loads the trained model (best_model.pt) from Assignment 2 folder. Pleas
 - The IMDB dataset contains only binary sentiment labels.
 
 - Neutral or mixed reviews are inherently ambiguous.
+
 
 - The model is forced to choose a polarity, which is explicitly communicated via decision strength warnings.
